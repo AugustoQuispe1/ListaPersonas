@@ -39,15 +39,16 @@
 			this.textBox4 = new System.Windows.Forms.TextBox();
 			this.btnCargar = new System.Windows.Forms.Button();
 			this.btnBorrar = new System.Windows.Forms.Button();
+			this.label1 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// dataGridView1
 			// 
 			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView1.Location = new System.Drawing.Point(42, 94);
+			this.dataGridView1.Location = new System.Drawing.Point(89, 102);
 			this.dataGridView1.Name = "dataGridView1";
-			this.dataGridView1.Size = new System.Drawing.Size(442, 239);
+			this.dataGridView1.Size = new System.Drawing.Size(391, 239);
 			this.dataGridView1.TabIndex = 0;
 			// 
 			// lblCodigo
@@ -122,6 +123,7 @@
 			this.btnCargar.TabIndex = 9;
 			this.btnCargar.Text = "Cargar";
 			this.btnCargar.UseVisualStyleBackColor = true;
+			this.btnCargar.Click += new System.EventHandler(this.btnCargar_Click);
 			// 
 			// btnBorrar
 			// 
@@ -131,12 +133,25 @@
 			this.btnBorrar.TabIndex = 10;
 			this.btnBorrar.Text = "Borrar";
 			this.btnBorrar.UseVisualStyleBackColor = true;
+			this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label1.Location = new System.Drawing.Point(157, 56);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(245, 31);
+			this.label1.TabIndex = 11;
+			this.label1.Text = "Lista de personas";
 			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.label1);
 			this.Controls.Add(this.btnBorrar);
 			this.Controls.Add(this.btnCargar);
 			this.Controls.Add(this.textBox4);
@@ -169,6 +184,7 @@
 		private System.Windows.Forms.TextBox textBox4;
 		private System.Windows.Forms.Button btnCargar;
 		private System.Windows.Forms.Button btnBorrar;
+		private System.Windows.Forms.Label label1;
 		}
 	}
 

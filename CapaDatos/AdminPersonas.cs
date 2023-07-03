@@ -17,11 +17,19 @@ namespace CapaDatos
 			string orden = string.Empty;
 
 			if (accion == "Alta")
+			{ 
+				orden = $"INSERT INTO Personas vaules (  '{objPersona.Codigo}','{objPersona.Nombre}','{objPersona.Apellido}','{objPersona.Edad});";
+			}
 
-				orden = $"insert into Personas vaules (" + objPersona.Codigo + ",'" + objPersona.Nombre + ",'" + objPersona.Apellido + ",'" + objPersona.Edad + "');";
+
+
 
 			if (accion == "Borrar")
+			{
 				orden = "delete * from Personas where Codigo ='" + objPersona.Codigo + ",'";
+			}
+
+
 
 			OleDbCommand cmd = new OleDbCommand(orden, conexion);
 			try
@@ -47,12 +55,12 @@ namespace CapaDatos
 			string orden = string.Empty;
 			if (cual != "Todos")
 				{
-				orden = "select * from Autos where Patente = " + cual + ";";
+				orden = "select * from Personas where Codigo = " + cual + ";";
 				}
 
 			else
 				{
-				orden = "select * from Autos;";
+				orden = "select * from Personas;";
 				}
 
 			OleDbCommand cmd = new OleDbCommand(orden, conexion);
@@ -67,7 +75,7 @@ namespace CapaDatos
 				}
 			catch (Exception e)
 				{
-				throw new Exception("Error al listar Autos", e);
+				throw new Exception("Error al listar Personas", e);
 				}
 			finally
 				{
