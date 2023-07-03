@@ -17,11 +17,9 @@ namespace CapaDatos
 			string orden = string.Empty;
 
 			if (accion == "Alta")
-			{ 
-				orden = $"INSERT INTO Personas vaules (  '{objPersona.Codigo}','{objPersona.Nombre}','{objPersona.Apellido}','{objPersona.Edad});";
+			{
+				orden = "INSERT INTO Personas VALUES ('" + objPersona.Codigo + "','" + objPersona.Nombre + "','" + objPersona.Apellido + "','" + objPersona.Edad + "');";
 			}
-
-
 
 
 			if (accion == "Borrar")
