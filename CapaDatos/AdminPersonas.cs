@@ -24,7 +24,7 @@ namespace CapaDatos
 
 			if (accion == "Borrar")
 			{
-				orden = "delete * from Personas where Codigo ='" + objPersona.Codigo + ",'";
+				orden = "DELETE FROM Personas WHERE Codigo='" + objPersona.Codigo + "';";
 			}
 
 
@@ -53,7 +53,7 @@ namespace CapaDatos
 			string orden = string.Empty;
 			if (cual != "Todos")
 				{
-				orden = "select * from Personas where Codigo = " + cual + ";";
+				orden = "SELECT * FROM Personas WHERE Codigo = " + cual + ";";
 				}
 
 			else

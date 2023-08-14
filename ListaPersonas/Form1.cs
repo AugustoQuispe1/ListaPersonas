@@ -10,23 +10,25 @@ using System.Windows.Forms;
 using System.Data;
 using Entidades;
 using CapaNegocios;
-	
+using System.Diagnostics.Eventing.Reader;
+
 namespace ListaPersonas
 	{
 	public partial class Form1 :Form
 		{
-		NegPersonas objNegPersonas = new NegPersonas();
-		public DataTable DT { get; set; } = new DataTable();
-		DataSet ds = new DataSet();
+        //NegPersonas objNegPersonas = new NegPersonas();
+        NegPersonas objNegPersonas = new NegPersonas();
+        //public DataTable DT { get; set; } = new DataTable();
+        DataSet ds = new DataSet();
 		private Persona persona = new Persona();
 
 
 		public Form1()
 			{
-			CrearDGV();
-			LlenarDGV();
+		
+			//CrearDGV();
 			InitializeComponent();
-
+            //DataGridView dataGridView1 = new DataGridView();
 			dataGridView1.Columns.Add("0", "Codigo");
 			dataGridView1.Columns.Add("1", "Nombre");
 			dataGridView1.Columns.Add("2", "Apellido");
@@ -36,8 +38,9 @@ namespace ListaPersonas
 			dataGridView1.Columns[1].Width = 100;
 			dataGridView1.Columns[2].Width = 100;
 			dataGridView1.Columns[3].Width = 60;
+            LlenarDGV();
 
-			}
+            }
 
 		private void btnCargar_Click(object sender, EventArgs e)
 			{
@@ -77,19 +80,7 @@ namespace ListaPersonas
 			persona.Edad = Convert.ToInt32(textBox4.Text);
 			}
 		
-		private void CrearDGV()
-			{
-			//dataGridView1.Columns.Add("0", "Codigo");
-			//dataGridView1.Columns.Add("1", "Nombre");
-			//dataGridView1.Columns.Add("2", "Apellido");
-			//dataGridView1.Columns.Add("3", "Edad");
-
-			//dataGridView1.Columns[0].Width = 100;
-			//dataGridView1.Columns[1].Width = 100;
-			//dataGridView1.Columns[2].Width = 100;
-			//dataGridView1.Columns[3].Width = 60;
-
-			}
+		
 
 
 
@@ -98,24 +89,32 @@ namespace ListaPersonas
 		
 		private void LlenarDGV()
 			{
-			
-
+			//dataGridView1.Rows.Clear();
 			DataSet ds = new DataSet();
 			ds = objNegPersonas.listadoAutos("Todos");
+			
 
 			if (ds.Tables[0].Rows.Count > 0)
-				{
+			{
 				foreach (DataRow dr in ds.Tables[0].Rows)
 					{
-					dataGridView1.Rows.Add(dr[0].ToString(), dr[1], dr[2], dr[3]);
+					dataGridView1.Rows.Add(dr[0]?.ToString() ?? "", dr[1], dr[2], dr[3]?.ToString() ?? "");
 					limpiarpantalla();
 					}
 				}
+			else
+				MessageBox.Show("No hay personas cargadas en el sistema");
 			}
+
+		
 
 		private void btnBorrar_Click(object sender, EventArgs e)
 			{
-			int i = dataGridView1.CurrentRow.Index;
-			dataGridView1.Rows.RemoveAt(i);
+			int nGrabados = -1;
+			nGrabados = objNegPersonas.abmPersonas("Borrar", persona);
+			dataGridView1.Rows.Clear();
+			LlenarDGV();
+			MessageBox.Show("Se elimino el registro con exito");
+
 			}
 		}	}
